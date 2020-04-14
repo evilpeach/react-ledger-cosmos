@@ -2,7 +2,8 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-import TransportU2F from '@ledgerhq/hw-transport-u2f'
+// import TransportU2F from '@ledgerhq/hw-transport-u2f'
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb'
 import CosmosApp from 'ledger-cosmos-js'
 
 const getTransport = async () => {
@@ -11,7 +12,8 @@ const getTransport = async () => {
   console.log(`Trying to connect via U2F...`)
 
   try {
-    transport = await TransportU2F.create(10000)
+    transport = await TransportWebUSB.create()
+    // transport = await TransportU2F.create(10000)
   } catch (e) {
     console.log(e)
   }
